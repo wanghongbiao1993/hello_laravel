@@ -12,14 +12,22 @@ class UserController extends Controller
     {
         //未登陆用户可执行的操作
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store']
+            'except' => ['show', 'create', 'store', 'index']
         ]);
 
         $this->middleware('guest', [
             'only' => ['create']
         ]);
     }
-    //
+
+    public function index(Request $request)
+    {
+
+        $users = User::paginate(10);
+        return view('users.index', compact('users'));
+    }
+
+    //用户创建页面
     public function create()
     {
         return view('users.create');
