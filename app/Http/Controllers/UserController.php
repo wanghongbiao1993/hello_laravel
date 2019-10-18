@@ -18,4 +18,18 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
+    /**
+     * 用户创建
+     * @param Request $request
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|confirmed|min:6'
+        ]);
+        return;
+    }
 }
