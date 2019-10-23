@@ -98,4 +98,6 @@ class User extends Authenticatable
     {
         return $this->followings->contains($user_id);
     }
+
+
 }
