@@ -40,7 +40,7 @@ class SessionsController extends Controller
                 return redirect('/');
             }
         } else {
-            session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
+            session()->flash('danger', '很抱歉，您的邮箱和密码不匹配!');
             return redirect()->back()->withInput();
         }
     }
